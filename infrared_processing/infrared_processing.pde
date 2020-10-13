@@ -8,7 +8,7 @@ float step;
 int n = 80; // number of blobs
 float radius = 0; // diameter of the circle
 float inter = 0.1; // difference between the sizes of two blobs
-float maxNoise = 100;
+float maxNoise = 300;
 
 Serial myPort;
 boolean redActive = true;
@@ -40,7 +40,9 @@ void draw() {
 		data = myPort.readStringUntil('\n');
 	}
 	if (data != null) {
-    String d = data.substring(4);
+    String d = trim(data);//data.substring(4);
+    println(d);
+    
 		if (d.equals(redKey))   redActive = !redActive;
 		if (d.equals(greenKey)) greenActive = !greenActive;
 		if (d.equals(blueKey))  blueActive = !blueActive;
